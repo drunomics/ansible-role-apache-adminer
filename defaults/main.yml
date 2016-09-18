@@ -1,0 +1,7 @@
+---
+apache_adminer_enable_site: true
+# Insecure default adminer/adminer: Change it!
+apache_adminer_htpasswd_file:
+  - "adminer:$apr1$NxFu2BdO$eCONlEN2lbQQhpgrbo6OU."
+apache_adminer_htpasswd_bypass_from: []
+apache_adminer_subdomain: "devel-mysql"

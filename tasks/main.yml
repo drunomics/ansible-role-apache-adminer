@@ -1,0 +1,30 @@
+---
+##
+# PHP Adminer
+#
+- name: Add apache site configuration
+  set_fact:
+    apache_sites: "{{ apache_sites_to_add|combine(apache_sites) }}"
+  vars:
+    apache_sites_to_add:
+      adminer:
+        enabled: "{{ apache_adminer_enable_site }}"
+        document_root: "{{ adminer_install_dir }}"
+        server_name: "{{ apache_adminer_subdomain }}"
+        server_alias: "{{ apache_adminer_subdomain }}*. {{ apache_adminer_subdomain }}*_"
+        htpasswd_file: "adminer"
+        htpasswd_bypass_from: "{{ apache_adminer_htpasswd_bypass_from }}"
+        options: FollowSymLinks
+        directory_index: "{{ adminer_install_filename }}"
+
+- name: Add apache htpasswd configuration
+  set_fact:
+    apache_htpasswd_files: "{{ apache_htpasswd_files_to_add|combine(apache_htpasswd_files) }}"
+  vars:
+    apache_htpasswd_files_to_add:
+      adminer: "{{ apache_adminer_htpasswd_file }}"
+
+- debug: var={{ item }}
+  with_items:
+    - apache_sites
+    - apache_htpasswd_files
