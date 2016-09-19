@@ -23,8 +23,3 @@
   vars:
     apache_htpasswd_files_to_add:
       adminer: "{{ apache_adminer_htpasswd_file }}"
-
-- debug: var={{ item }}
-  with_items:
-    - apache_sites
-    - apache_htpasswd_files
