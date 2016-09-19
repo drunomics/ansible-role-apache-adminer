@@ -14,7 +14,7 @@
 
   - name: Test if adminer is accessable
     shell: >
-      curl -u adminer:adminer --header 'Host: devel-mysql.example.com' http://{{ ansible_default_ipv4.address }}/
+      curl -u admin:admin --header 'Host: devel-mysql.example.com' http://{{ ansible_default_ipv4.address }}/
     register: adminer_result
     failed_when: adminer_result.stdout.find('adminer') == -1
     tags: assert
