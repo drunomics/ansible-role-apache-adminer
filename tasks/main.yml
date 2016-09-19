@@ -11,7 +11,7 @@
         enabled: "{{ apache_adminer_enable_site }}"
         document_root: "{{ adminer_install_dir }}"
         server_name: "{{ apache_adminer_subdomain }}"
-        server_alias: "{{ apache_adminer_subdomain }}*. {{ apache_adminer_subdomain }}*_"
+        server_alias: "{{ apache_adminer_subdomain }}.* {{ apache_adminer_subdomain }}_*"
         htpasswd_file: "adminer"
         htpasswd_bypass_from: "{{ apache_adminer_htpasswd_bypass_from }}"
         options: FollowSymLinks
